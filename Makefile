@@ -5,8 +5,11 @@ SRCS := $(TARGET).tex
 VERBOSE := @
 
 pdf: $(TARGET).tex
-	$(VERBOSE)pdflatex $< 
+	$(VERBOSE)pdflatex $<
 	$(VERBOSE)xdg-open $(TARGET).pdf
+
+odt: $(TARGET).tex
+	pandoc -f latex -t odt -o $(TARGET).odt $<
 
 vim:
 	@echo vim $(SRCS) Makefile
